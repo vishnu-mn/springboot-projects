@@ -3,6 +3,7 @@ package com.example.restapibasic.controller;
 import com.example.restapibasic.bean.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -25,6 +26,11 @@ public class StudentController {
     @GetMapping("students/{id}")
     public Student getStudentById(@PathVariable("id") int studentId){
         Student student = new Student(studentId,"samplefname","samplelname");
+        return student;
+    }
+    @GetMapping("students/query")
+    public Student getStudentRequest(@RequestParam int id){
+        Student student = new Student(id,"samplefname","samplelname");
         return student;
     }
 }
