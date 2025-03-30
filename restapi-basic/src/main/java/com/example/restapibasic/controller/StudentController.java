@@ -1,10 +1,9 @@
 package com.example.restapibasic.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.restapibasic.bean.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,14 @@ public class StudentController {
     @GetMapping("students/query")
     public Student getStudentRequest(@RequestParam int id){
         Student student = new Student(id,"samplefname","samplelname");
+        return student;
+    }
+    @PostMapping("students/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student createStudent(@RequestBody Student student){//requestbody converts json to java object
+        System.out.println(student.getId());
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
         return student;
     }
 }
