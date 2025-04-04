@@ -45,6 +45,9 @@ public class Account {
         this.balance = balance;
     }
 
+    public Account() {
+        
+    }
     public Account(Long id, String accountHolderName, double balance) {
         this.id = id;
         this.accountHolderName = accountHolderName;
